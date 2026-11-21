@@ -1,0 +1,11 @@
+/target/
+/dist/
+/.build-tools/
+/test-output/
+.DS_Store
+
+# Local development notes and verification screenshots.
+/docs/
+
+# Original icon artwork. The app uses packaging/AppIcon.icns.
+/packaging/AppIcon.png

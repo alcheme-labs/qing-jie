@@ -1,0 +1,42 @@
+[package]
+name = "qingjie"
+version = "0.3.1"
+edition = "2024"
+description = "A tiny macOS menu-bar screenshot utility"
+license = "MIT"
+
+[[test]]
+name = "native_editor"
+path = "tests/native_editor.rs"
+harness = false
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = "0.6.3"
+objc2-foundation = { version = "0.3.2", default-features = false, features = [
+    "std", "NSArray", "NSBundle", "NSData", "NSDate", "NSDateFormatter", "NSDictionary", "NSError",
+    "NSEnumerator", "NSGeometry", "NSNotification", "NSObject", "NSRunLoop", "NSString", "NSTimer", "NSURL",
+    "NSUserDefaults", "NSUUID", "NSValue"
+] }
+objc2-app-kit = { version = "0.3.2", default-features = false, features = [
+    "std", "libc", "objc2-core-foundation", "NSApplication", "NSAlert", "NSBitmapImageRep", "NSImageRep", "NSImage",
+    "NSMenu", "NSMenuItem", "NSStatusBar", "NSStatusItem", "NSStatusBarButton",
+    "NSButton", "NSButtonCell", "NSControl", "NSCell", "NSResponder", "NSView", "NSWindow",
+    "NSPanel", "NSSavePanel", "NSPasteboard", "NSWorkspace", "NSRunningApplication",
+    "NSGraphics", "NSGraphicsContext", "NSColor", "NSColorSpace", "NSEvent",
+    "NSBezierPath", "NSFont", "NSImageView", "NSTextField", "NSScreen", "NSAffineTransform", "NSPasteboardItem"
+] }
+global-hotkey = "0.10.0"
+gif = "0.14"
+block2 = "0.6.2"
+dispatch2 = "0.3.1"
+objc2-core-media = { version = "0.3.2", default-features = false, features = ["std", "CMSampleBuffer", "CMTime", "objc2-core-video"] }
+objc2-core-video = { version = "0.3.2", default-features = false, features = ["std", "CVBase", "CVPixelBuffer", "CVBuffer", "CVReturn"] }
+objc2-screen-capture-kit = { version = "0.3.2", default-features = false, features = [
+    "std", "libc", "SCShareableContent", "SCStream", "block2", "dispatch2", "objc2-core-foundation", "objc2-core-graphics", "objc2-core-media"
+] }
+
+[profile.release]
+opt-level = "s"
+lto = true
+codegen-units = 1
+strip = false # The macOS packaging script strips with the system tool before signing.

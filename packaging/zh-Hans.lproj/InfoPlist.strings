@@ -1,0 +1,3 @@
+"CFBundleName" = "轻截";
+"CFBundleDisplayName" = "轻截";
+"NSScreenCaptureUsageDescription" = "轻截会在你主动截图或制作 GIF 时，采集你选择的屏幕区域。";
